@@ -1,7 +1,37 @@
+import { useState } from 'react';
 import { NewsItemType } from '../../types';
 import { convertToDays } from '../../utils';
 import styles from './card.module.css';
+import heartBlank from '../../../public/blank-heart.png';
+import heartFull from '../../../public/heart.png';
+import { useEffect } from 'react';
+
 function Card( news : NewsItemType) {
+  const [isFavorite, setIsFavorite] = useState(false);
+  useEffect(() => {
+    const favorites = localStorage.getItem('favoritas');
+    if(favorites){
+      const parsedFavorites = JSON.parse(favorites);
+      setIsFavorite(parsedFavorites.some((favoriteItem: NewsItemType) => (favoriteItem.id === news.id)));
+    }
+  }, []);
+  function handleFavorite(id: number){
+    const favorites = localStorage.getItem('favoritas');
+    if(favorites){
+      const parsedFavorites = JSON.parse(favorites);
+      if(parsedFavorites.some((favoriteItem: NewsItemType) => (favoriteItem.id === id))){
+        const newFavorites = parsedFavorites.filter((favoriteItem: NewsItemType) => (favoriteItem.id !== id));
+        localStorage.setItem('favoritas', JSON.stringify(newFavorites));
+        setIsFavorite(false);
+      } else {
+        localStorage.setItem('favoritas', JSON.stringify([...parsedFavorites, news]));
+        setIsFavorite(true);
+      }
+    } else {
+      localStorage.setItem('favoritas', JSON.stringify([news]));
+      setIsFavorite(true);
+    }
+  }
   return (
     <div className={ styles.box }>
         <h3>{ news.titulo }</h3>
@@ -11,8 +41,14 @@ function Card( news : NewsItemType) {
           <button>Leia a notícia aqui</button>
         </div>
         <hr />
-        <button className={ styles['button-favorite'] }>
-          <img src="../../public/blank-heart.png" alt="" />
+        <button
+          className={ styles['button-favorite'] }
+          onClick={ () => handleFavorite(news.id) }
+        >
+          <img
+            src={ isFavorite ? heartFull : heartBlank } 
+            alt={ isFavorite ?  'Favorito' : 'Adicionar aos favoritos'} 
+          />
         </button>
     </div>
   );

@@ -9,7 +9,6 @@ function Cards(){
     const news = useContext(AppContext);
     return(
         <>
-            <h2>Notícias</h2>
             <FilterBar />
             <div className={styles['card-list']}>    
                 {news.items && news.items.map((news: NewsItemType) => (

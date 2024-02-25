@@ -9,7 +9,7 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
     justify-content: center;
     padding-bottom: 10px;
-    margin: 30px 10px 20px 0;
+    margin: 30px 0 20px 0;
     background-color: white;
 }
 
@@ -44,17 +44,6 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.box-footer button {
-    background-color: #05D465;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Popins', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-  }
-
 hr {
     margin: 0;
     padding: 0;
@@ -66,10 +55,10 @@ hr {
   border: none;
   background-color: transparent;
   margin: 5px 10px 0 0;
-  cursor: pointer;
 }
 
 .button-favorite img {
   width: 25px;
-  float: right;  
+  cursor: pointer;
+  float: right;
 }
