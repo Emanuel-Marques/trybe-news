@@ -22,7 +22,6 @@ function FilterBar() {
               </Nav.Item>
           </Nav>
       </div>
-    
   );
 }
 
