@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+  background-color: #0E0E0ED9;
+  display: flex;
+  align-items: center;
+}
+
+img {
+  width: 130px;
+  height: 100%;
+}
+
+.h1 {
+  color: white;
+  text-decoration: none;
+  font-family: "Poller One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  padding: 20px;
+}
+
+.div-center{
+   display: flex;
+   justify-content: center;
+   width: 100%;
+}
