@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NewsItemType } from '../../types';
-import { convertToDays } from '../../utils';
+import { Favorite, convertToDays } from '../../utils';
 import styles from './card.module.css';
 import heartBlank from '../../../public/blank-heart.png';
 import heartFull from '../../../public/heart.png';
@@ -16,21 +16,7 @@ function Card( news : NewsItemType) {
     }
   }, []);
   function handleFavorite(id: number){
-    const favorites = localStorage.getItem('favoritas');
-    if(favorites){
-      const parsedFavorites = JSON.parse(favorites);
-      if(parsedFavorites.some((favoriteItem: NewsItemType) => (favoriteItem.id === id))){
-        const newFavorites = parsedFavorites.filter((favoriteItem: NewsItemType) => (favoriteItem.id !== id));
-        localStorage.setItem('favoritas', JSON.stringify(newFavorites));
-        setIsFavorite(false);
-      } else {
-        localStorage.setItem('favoritas', JSON.stringify([...parsedFavorites, news]));
-        setIsFavorite(true);
-      }
-    } else {
-      localStorage.setItem('favoritas', JSON.stringify([news]));
-      setIsFavorite(true);
-    }
+    setIsFavorite(Favorite(id, news));
   }
   return (
     <div className={ styles.box }>

@@ -6,7 +6,7 @@ const AppProvider =({ children } : any) => {
     const [news, setNews] = useState<NewsType>({} as NewsType);
     useEffect(() => {
         const fetchNews = async () =>{
-            const res = await fetch("https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=6");
+            const res = await fetch("https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10");
             const data = await res.json();
             setNews(data);
             console.log(`Response: ${data}`);

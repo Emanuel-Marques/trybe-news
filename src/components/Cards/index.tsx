@@ -9,11 +9,12 @@ function Cards(){
     const news = useContext(AppContext);
     return(
         <>
+            <Card {...news.items[0]} />
             <FilterBar />
             <div className={styles['card-list']}>    
-                {news.items && news.items.map((news: NewsItemType) => (
-                    <Card {...news} />)
-                )}
+                {news.items && news.items.map((news: NewsItemType, index: number) => (
+                    index > 0 && <Card {...news} />
+                    ))}
             </div>
         </>
     );
