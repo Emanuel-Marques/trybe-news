@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import Home from "./pages/Home";
 import AppProvider from "./context/AppProvider";
+import News from "./pages/News";
+import NotFound from "./pages/NotFound";
 
 function App() {
   
@@ -8,6 +10,8 @@ function App() {
     <AppProvider>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/news/:id" element={<News />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AppProvider>
   )
