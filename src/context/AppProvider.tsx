@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
 import AppContext from "./AppContext";
 import NewsType from "../types";
 
-const AppProvider =({ children } : any) => { 
+const AppProvider =({ children } : { children: ReactNode}) => { 
     const [news, setNews] = useState<NewsType>({} as NewsType);
     useEffect(() => {
         const fetchNews = async () =>{
