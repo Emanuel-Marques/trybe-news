@@ -9,7 +9,7 @@ function App() {
   return (
     <AppProvider>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/trybe-news" element={<Home />} />
         <Route path="/news/:id" element={<News />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
