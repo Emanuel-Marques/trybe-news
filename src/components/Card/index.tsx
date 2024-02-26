@@ -5,6 +5,7 @@ import styles from './card.module.css';
 import heartBlank from '../../../public/blank-heart.png';
 import heartFull from '../../../public/heart.png';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Card( news : NewsItemType) {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -24,7 +25,10 @@ function Card( news : NewsItemType) {
         <p className={ styles.intro }>{  news.introducao }</p>
         <div className={ styles['box-footer'] }>
           <p>{ convertToDays(news.data_publicacao) }</p>
-          <button>Leia a notícia aqui</button>
+          <button
+          >
+            <Link to={ `${news.link}` }>Leia a notícia aqui</Link>
+          </button>
         </div>
         <hr />
         <button
